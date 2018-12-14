@@ -1,19 +1,26 @@
-import {TransformationContext, Transformer} from "typescript/lib/tsserverlibrary";
+import { TransformationContext, Transformer } from "typescript/lib/tsserverlibrary";
 import * as ts from "typescript";
-import CustomTransformers = ts.CustomTransformers;
 
+/**
+ * Check if node element is private
+ *
+ * @param node
+ */
 const isPrivateNode = (node: ts.Node): boolean => {
-	return Boolean(node.modifiers && node.modifiers.some(mod => mod.kind === ts.SyntaxKind.PrivateKeyword));
+	return Boolean(
+		node.modifiers &&
+		node.modifiers.some(mod => mod.kind === ts.SyntaxKind.PrivateKeyword)
+	);
 };
 
 class PrivateTransformHelper {
 	allNames: Set<string> = new Set();
 	names: Map<string, string> = new Map();
 
-	index: number = 9;
-	multy: number = 16;
+	private index: number = 9;
+	private multy: number = 16;
 
-	getNewVariableName(): string {
+	private getNewVariableName(): string {
 		this.index += 1;
 
 		if (this.index % this.multy === 0) {
@@ -46,7 +53,7 @@ class PrivateTransformHelper {
 	}
 }
 
-export const privateTransformer: CustomTransformers = <CustomTransformers>{
+export const privateTransformer: ts.CustomTransformers = <ts.CustomTransformers>{
 	before: [
 		(context: TransformationContext): Transformer<ts.Node> => {
 			const helper = PrivateTransformHelper.getHelperFromContext(context);
