@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --lib es2016,dom test.ts && node test.js",
+    "build": "tsc --lib es2016,dom index.ts",
     "test": "mocha -r ts-node/register tests/**.ts"
   },
   "keywords": [],
