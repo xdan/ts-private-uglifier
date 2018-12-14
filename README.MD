@@ -14,8 +14,23 @@ class A {
 	}
 }
 ```
-
-will be compiled in
+without transformer will be compiled in
+```typescript
+var A = /** @class */ (function () {
+    function A() {
+        this.spinner = 1;
+        this.__hanSoloLooongLongName = '123';
+    }
+    A.prototype.__bestSpinnerLoonLongMethod = function (test) {
+        console.log(this.spinner + test + this.__hanSoloLooongLongName);
+    };
+    A.prototype.dolg = function () {
+        this.__bestSpinnerLoonLongMethod(1);
+    };
+    return A;
+}());
+```
+with transformer will be compiled in
 ```typescript
 var A = /** @class */ (function () {
     function A() {
