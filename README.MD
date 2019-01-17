@@ -46,3 +46,32 @@ var A = /** @class */ (function () {
     return A;
 }());
 ```
+### Webpack
+#### ts-loader
+```javascript
+rules: [
+    {
+        test: /\.(ts)$/,
+        loader: 'ts-loader',
+        exclude: /(node_modules|bower_components)/,
+        options: {
+            getCustomTransformers: () => privateTransformer
+        }
+    }
+]
+},
+```
+#### awesome-typescript-loader
+```javascript
+rules: [
+    {
+        test: /\.(ts)$/,
+        loader: 'awesome-typescript-loader',
+        exclude: /(node_modules|bower_components)/,
+        options: {
+            getCustomTransformers: () => privateTransformer
+        }
+    }
+]
+},
+```
