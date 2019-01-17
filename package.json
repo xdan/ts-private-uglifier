@@ -1,27 +1,17 @@
 {
   "name": "ts-private-uglifier",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "newversion": "npm test && npm version patch --no-git-tag-version && npm run build && npm run newversiongit && npm publish ./",
+    "newversiongit": "git add --all  && git commit -m \"New version $npm_package_version. Read more https://github.com/xdan/jodit/releases/tag/$npm_package_version \" && git tag $npm_package_version && git push --tags origin HEAD:master",
     "build": "tsc --lib es2016,dom index.ts",
     "test": "mocha -r ts-node/register tests/**.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.5",
-    "awesome-typescript-loader": "^5.2.1",
-    "chai": "^4.2.0",
-    "mocha": "^5.2.0",
-    "ts-loader": "^5.3.3",
-    "ts-node": "^7.0.1",
-    "typescript": "^3.2.2",
-    "typings": "^2.1.1",
-    "webpack": "^4.28.4"
-  },
   "devDependencies": {
     "@types/node": "^10.12.18"
   }
