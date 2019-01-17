@@ -1,7 +1,16 @@
 {
   "compilerOptions": {
+    "target": "es5",
     "lib": [
-      "ES2017"
+      "dom", "es6"
+    ],
+    "moduleResolution": "node",
+    "types": ["@types/chai", "mocha", "node"],
+    "typeRoots": [
+      "./node_modules/@types"
     ]
-  }
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }
